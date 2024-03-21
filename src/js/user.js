@@ -1,0 +1,7 @@
+class GameSavingLoader {
+    constructor() {
+        load() {
+          
+        }
+    }
+}
