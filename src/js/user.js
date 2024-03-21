@@ -1,11 +1,9 @@
-import json from "./user.js";
-import read from "./user.js";
+import json from "./reader.js";
+import read from "./parser.js";
 
 export default class GameSavingLoader {
      load() {
-      const data = read(); 
-      const value = json(data); 
-      return value;
-    }
+       return read().then(data => json(data),
+        )
+     }
   }
-  

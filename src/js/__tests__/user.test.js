@@ -1,16 +1,10 @@
-import { loadUser } from '../user';
-import { httpGet } from '../http';
+import  { GameSavingLoader } from '../user.js';
 
-jest.mock('../http');
+test("test load", () => {
+  const result = '{"id":9,"created":1546300800,"userInfo":{"id":1,"name":"Hitman","level":10,"points":2000}}';
+  GameSavingLoader.load().then((response) => {
+    expect(response).toBe(result);
+    done();
+  });
+})
 
-beforeEach(() => {
-  jest.resetAllMocks();
-});
-
-test('should call loadUser once', () => {
-  httpGet.mockReturnValue(JSON.stringify({}));
-
-  const response = loadUser(1);
-  expect(response).toEqual({});
-  expect(httpGet).toHaveBeenCalledWith('http://server:8080/users/1');
-});
